@@ -1,0 +1,11 @@
+#ifndef DRONEPROJECT_DRONESOCKETDEFINE_H
+#define DRONEPROJECT_DRONESOCKETDEFINE_H
+
+#define ProxyIDType    unsigned long long
+#define DRONE_SOCKET_CRC_VALUE      (221012)
+#define DRONE_SOCKET_PROXY_VERSION          ("0.0.1")
+
+#define MEMORY_ITEM_SIZE            (1024 * 4)
+#define MAX_WRITE_BUFFER_SIZE       (1024 * 1024 * 2)
+
+#endif //DRONEPROJECT_DRONESOCKETDEFINE_H

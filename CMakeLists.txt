@@ -3,36 +3,24 @@ project(zeromq_study)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_compile_options("-Wno-unused-result" "-Wno-deprecated-declarations")
+add_compile_options("-Wno-unused-result" "-Wno-deprecated-declarations" "-O0" "-ggdb")
+
+message(STATUS ${PROJECT_SOURCE_DIR})
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/../zeromq_install/zeromq-4.1.8/include
-    ${PROJECT_SOURCE_DIR}/../zeromq_install/cppzmq-4.10.0)
+    ${PROJECT_SOURCE_DIR}/../install/libzmq/include
+    ${PROJECT_SOURCE_DIR}/../install/cppzmq/include)
 
 link_directories(
-    ${PROJECT_SOURCE_DIR}/../zeromq_install/zeromq-4.1.8/.libs
+    ${PROJECT_SOURCE_DIR}/../install/libzmq//lib
 )
 
-add_executable(hwclient example001/hwclient.cpp)
-add_executable(hwserver example001/hwserver.cpp)
-target_link_libraries(hwclient PRIVATE zmq)
-target_link_libraries(hwserver PRIVATE zmq)
+add_subdirectory(tcp_client)
+add_subdirectory(tcp_server)
+add_subdirectory(linux_server)
 
-add_executable(version example002/version.cpp)
-target_link_libraries(version PRIVATE zmq)
 
-add_executable(wuserver example003/wuserver.cpp)
-target_link_libraries(wuserver PRIVATE zmq)
-add_executable(wuclient example003/wuclient.cpp)
-target_link_libraries(wuclient PRIVATE zmq)
 
-add_executable(taskvent example004/taskvent.cpp)
-target_link_libraries(taskvent PRIVATE zmq)
-add_executable(taskwork example004/taskwork.cpp)
-target_link_libraries(taskwork PRIVATE zmq)
-add_executable(tasksink example004/tasksink.cpp)
-target_link_libraries(tasksink PRIVATE zmq)
 
 
 
